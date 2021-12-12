@@ -16,7 +16,7 @@ public class GetOrdersListTests {
     GetOrderClient getOrderClient;
     GetOrderByTrackClient getOrderByTrackClient;
     CourierCreateClient courierCreateClient;
-    CancelOrderClient cancelOrderClient;
+
 
     @Before
     public void setUp(){
@@ -26,7 +26,7 @@ public class GetOrdersListTests {
         getOrderClient = new GetOrderClient();
         getOrderByTrackClient = new GetOrderByTrackClient();
         courierCreateClient = new CourierCreateClient();
-        cancelOrderClient = new CancelOrderClient();
+
     }
 
     @Test
