@@ -18,6 +18,17 @@ public class CourierLoginClient extends ApiClient {
                 .post(baseURI);
     }
 
+
+    @Step("Логин некорректного курьера")
+    public Response brokenCourierLogin(BrokenCourierCredentials brokenCourierCredentials){
+        return given()
+                .spec(getBaseSpec())
+                .and()
+                .body(brokenCourierCredentials)
+                .when()
+                .post(baseURI);
+    }
+
     @Step("Получение ID курьера")
     public int getCourierId(CourierCredentials courierCredentials){
         int courierId = 0;

@@ -6,7 +6,7 @@ import static io.restassured.RestAssured.*;
 
 public class CancelOrderClient extends ApiClient {
 
-    private String baseURI = "https://qa-scooter.praktikum-services.ru/api/v1/orders/cancel";
+    private String baseURI = "api/v1/orders/cancel";
 
     @Step("Отмена заказа")
     public Response cancelOrder(int id){

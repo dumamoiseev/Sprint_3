@@ -38,7 +38,7 @@ public class LoginCourierTests {
 
     @Test
     @DisplayName("Негативный тест на авторизацию курьера. Нет обязательного поля")
-    public void courierLoginWithOutLoginNegativeTest(){
+    public void courierLoginWithOutLoginValueNegativeTest(){
         CourierCredentials courierCredentials = new CourierCredentials(null, RandomStringUtils.randomAlphabetic(10));
         courierLoginClient.courierLogin(courierCredentials)
                 .then()
@@ -72,5 +72,17 @@ public class LoginCourierTests {
                 .statusCode(404)
                 .and()
                 .body("message", equalTo("Учетная запись не найдена"));
+    }
+
+    @Test
+    @DisplayName("Негативный тест на авторизацию курьера. Не передать курьер")
+    public void CourierLoginWithOutLoginFieldNegativeTest(){
+        BrokenCourier brokenCourier = BrokenCourier.getbrokenCourier();
+        courierLoginClient.brokenCourierLogin(BrokenCourierCredentials.from(brokenCourier))
+                .then()
+                .assertThat()
+                .statusCode(400)
+                .and()
+                .body("message", equalTo("Недостаточно данных для входа"));
     }
 }
